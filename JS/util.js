@@ -6,7 +6,8 @@
     - customize overlay:
         - text color
         - text size
-        - font
+        - font (automaticly get font fron website)
+        - button colors
 - animations
 - ask feedback on tour
 - needs to support to use 4 languages
@@ -14,6 +15,7 @@
         - being able to not choose an element to highlight
 - stay on same step on refresh
 - change next button to like exit or finish at the last step.
+- accacibility toetsenboord opties enz
 
 
 OPTIONAL:
