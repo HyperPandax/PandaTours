@@ -30,7 +30,7 @@ import { attachEventListeners } from "./events.js";
 
 export class GuidedTour {
     constructor() {
-        this.tourSteps = document.querySelectorAll('.tour-step');
+        this.tourSteps = document.querySelectorAll('*[data-intro]');
         this.currentStepIndex = 0;
 
         // Create overlay 
