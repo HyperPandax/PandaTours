@@ -50,6 +50,7 @@ export class GuidedTour {
     
         // Use the current step element for positioning
         const stepRect = this.tourSteps[this.currentStepIndex].getBoundingClientRect();
+    
         const distance = 10;
         this.overlay.style.top = `${stepRect.bottom + distance}px`;
         this.overlay.style.left = `${stepRect.left + distance}px`;
@@ -57,8 +58,16 @@ export class GuidedTour {
         // Update content
         this.overlayContent.querySelector('.step-title').innerText = this.tourSteps[this.currentStepIndex].getAttribute('data-title') || '';
         this.overlayContent.querySelector('.step-text').innerText = this.tourSteps[this.currentStepIndex].getAttribute('data-intro') || 'Default Content';
+
+
+        // Disable Previous button if it's the first step
+        if (this.currentStepIndex === 0) {
+            this.overlay.querySelector('.prev-button').classList.add('disabled');
+        } else {
+            this.overlay.querySelector('.prev-button').classList.remove('disabled');
+        }
     
-        // Logic for progress bar should go here
+        // Logic for progress bar
     
         this.overlay.innerHTML = '';
         this.overlay.appendChild(this.overlayContent);
