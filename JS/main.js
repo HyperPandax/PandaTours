@@ -1,4 +1,4 @@
-import { GuidedTour } from "./util.js";
+import { GuidedTour } from "./guided-tour.js";
 
 const guidedTour = new GuidedTour();
 guidedTour.start();
