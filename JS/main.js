@@ -5,7 +5,7 @@ guidedTour.start();
 
 /*TODO:
 - progress bar
-- devide all code in small seperate files
+- devide all code in small separate files
 - able to configure settings like:
     - overlay position
     - customize overlay:
@@ -20,7 +20,7 @@ guidedTour.start();
         - being able to not choose an element to highlight
 - stay on same step on refresh
 - change next button to like exit or finish at the last step.
-- accacibility toetsenboord opties enz
+- a11y toetsenbord opties enz
 
 
 OPTIONAL:

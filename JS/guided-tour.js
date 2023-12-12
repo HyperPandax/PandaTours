@@ -44,7 +44,9 @@ export class GuidedTour {
     }
 
     // Progress bar
-    //this.overlay.updateProgressBar(this.currentStepIndex, this.tourSteps.length);
+    this.overlay.querySelector(".progress-bar").value =
+      (100 / this.tourSteps.length) * this.currentStepIndex +
+      100 / this.tourSteps.length;
 
     this.overlay.innerHTML = "";
     this.overlay.appendChild(this.overlayContent);

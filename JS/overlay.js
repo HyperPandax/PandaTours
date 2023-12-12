@@ -21,8 +21,8 @@ export class Overlay {
       <div class="overlay-section">
         <p class="step-text"></p>
       </div>
-      <div class="overlay-section">
-        <div class=".progress-bar"></div>
+      <div class="overlay-section progress-div">
+        <progress class="progress-bar" value="0" max="100"></progress>
       </div>
       <div class="overlay-section buttons-grid">
         <button class="prev-button">Previous</button>

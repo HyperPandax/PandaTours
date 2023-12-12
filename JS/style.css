@@ -62,7 +62,24 @@
   margin: 0 auto;
 }
 
-.progress-bar {
+.progress-div {
+  height: 20px;
+}
+
+.progress-div progress {
+  border: none;
+  width: 100%;
+  height: 10px;
+}
+
+.progress-div progress::-webkit-progress-value {
+  background: gray;
+  border-radius: 15px;
+}
+
+.progress-div progress::-webkit-progress-bar {
+  background: lightgray;
+  border-radius: 15px;
 }
 
 .buttons-grid {
