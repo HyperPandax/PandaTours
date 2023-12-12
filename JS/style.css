@@ -62,6 +62,9 @@
   margin: 0 auto;
 }
 
+.progress-bar {
+}
+
 .buttons-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
