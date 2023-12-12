@@ -23,9 +23,8 @@
 }
 
 .highlight {
-  border: 2px solid gray;
-  margin: 8px !important;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 2px 2px 5px gray, 2px 2px 5px gray inset,
+    0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
   z-index: 9998;
 }
