@@ -1,5 +1,6 @@
 import { Overlay } from "./overlay.js";
 import { attachEventListeners } from "./events.js";
+import { OverlayPosition } from "./overlay-position.js";
 
 export class GuidedTour {
   constructor() {
@@ -22,12 +23,13 @@ export class GuidedTour {
     this.tourSteps[this.currentStepIndex].classList.add("highlight");
 
     // Use the current step element for positioning
-    const stepRect =
-      this.tourSteps[this.currentStepIndex].getBoundingClientRect();
-
-    const distance = 10;
-    this.overlay.style.top = `${stepRect.bottom + distance}px`;
-    this.overlay.style.left = `${stepRect.left + distance}px`;
+    const position =
+      this.tourSteps[this.currentStepIndex].getAttribute("data-position");
+    OverlayPosition.setPosition(
+      this.overlay,
+      this.tourSteps[this.currentStepIndex],
+      position
+    );
 
     // Update content
     this.overlayContent.querySelector(".step-title").innerText =

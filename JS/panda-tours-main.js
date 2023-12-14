@@ -22,6 +22,9 @@ guidedTour.start();
 - change next button to like exit or finish at the last step.
 - a11y toetsenbord opties enz
 
+- what happens if you add a LOT of text? 
+- ovelaypos breaks when overlay has variable width like min-width max-width
+
 
 OPTIONAL:
 - ask for confirmation when exiting tour
@@ -29,4 +32,5 @@ OPTIONAL:
 - being able to pauze and continue the tour?
 - restart tour
 - themes
+- left-top, left-bot, right-top, right-bot, top-left, top-right, bot-left, bot-right overlay position
 */

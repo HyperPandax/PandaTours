@@ -33,24 +33,30 @@ li a:hover {
   background-color: #111;
 }
 #content {
-  width: 50%;
+  width: 70%;
   margin: 0 auto;
 }
-.containerA {
-  width: 46%;
-  height: 50%;
+.containerA, .containerB, .containerC, .containerD{
   float: left;
-  margin: 10px;
+  margin: 1%;
   position: relative;
-  padding: 15px;
+  padding: 0.65%;
+}
+.containerA {
+  width: 46.7%;
+  height: 50%;
 }
 .containerB {
-  width: 95%;
+  width: 96.7%;
   height: 50%;
-  float: left;
-  margin: 10px;
-  position: relative;
-  padding: 15px;
+}
+.containerC {
+  width: 30%;
+  height: 50%;
+}
+.containerD {
+  width: 21.7%;
+  height: 50%;
 }
 
 footer {
