@@ -4,10 +4,8 @@ const guidedTour = new GuidedTour();
 guidedTour.start();
 
 /*TODO:
-- progress bar
-- devide all code in small separate files
+- divide all code in small separate files
 - able to configure settings like:
-    - overlay position
     - customize overlay:
         - text color
         - text size
@@ -32,5 +30,4 @@ OPTIONAL:
 - being able to pauze and continue the tour?
 - restart tour
 - themes
-- left-top, left-bot, right-top, right-bot, top-left, top-right, bot-left, bot-right overlay position
 */

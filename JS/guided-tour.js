@@ -1,57 +1,23 @@
 import { Overlay } from "./overlay.js";
-import { attachEventListeners } from "./events.js";
-import { OverlayPosition } from "./overlay-position.js";
+import { EventListeners } from "./events.js";
+import { ScrollTo } from "./scroll-to.js";
+import { Utils } from "./utils.js";
 
 export class GuidedTour {
   constructor() {
     this.tourSteps = document.querySelectorAll("*[data-intro]");
     this.currentStepIndex = 0;
+    this.utils = new Utils(this);
 
     // Create overlay
-    this.overlay = new Overlay().overlay;
+    this.overlay = new Overlay().overlayElement;
     this.overlayContent = this.overlay.querySelector(".overlay-content");
 
     document.body.appendChild(this.overlay);
-    attachEventListeners(this);
-  }
+    const eventListeners = new EventListeners(this);
+    eventListeners.attachEventListeners();
 
-  updateOverlayContent() {
-    // Remove highlight from previous step
-    this.tourSteps.forEach((step) => step.classList.remove("highlight"));
-
-    // Highlight the current step
-    this.tourSteps[this.currentStepIndex].classList.add("highlight");
-
-    // Use the current step element for positioning
-    const position =
-      this.tourSteps[this.currentStepIndex].getAttribute("data-position");
-    OverlayPosition.setPosition(
-      this.overlay,
-      this.tourSteps[this.currentStepIndex],
-      position
-    );
-
-    // Update content
-    this.overlayContent.querySelector(".step-title").innerText =
-      this.tourSteps[this.currentStepIndex].getAttribute("data-title") || "";
-    this.overlayContent.querySelector(".step-text").innerText =
-      this.tourSteps[this.currentStepIndex].getAttribute("data-intro") ||
-      "Default Content";
-
-    // Disable Previous button if it's the first step
-    if (this.currentStepIndex === 0) {
-      this.overlay.querySelector(".prev-button").classList.add("disabled");
-    } else {
-      this.overlay.querySelector(".prev-button").classList.remove("disabled");
-    }
-
-    // Progress bar
-    this.overlay.querySelector(".progress-bar").value =
-      (100 / this.tourSteps.length) * this.currentStepIndex +
-      100 / this.tourSteps.length;
-
-    this.overlay.innerHTML = "";
-    this.overlay.appendChild(this.overlayContent);
+    this.scrollTo = new ScrollTo();
   }
 
   nextStep() {
@@ -60,7 +26,7 @@ export class GuidedTour {
       this.endTour();
       return;
     }
-    this.updateOverlayContent();
+    this.utils.updateOverlayContent();
   }
 
   prevStep() {
@@ -68,7 +34,7 @@ export class GuidedTour {
     if (this.currentStepIndex < 0) {
       this.currentStepIndex = this.tourSteps.length - 1;
     }
-    this.updateOverlayContent();
+    this.utils.updateOverlayContent();
   }
 
   endTour() {
@@ -80,6 +46,10 @@ export class GuidedTour {
 
   start() {
     this.overlay.style.display = "flex";
-    this.updateOverlayContent();
+    this.utils.updateOverlayContent();
+  }
+
+  restartTour() {
+    // Implementation for restarting the tour
   }
 }

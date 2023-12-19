@@ -2,9 +2,9 @@ import { html, render } from "lit-html";
 
 export class Overlay {
   constructor() {
-    this.overlay = this.createOverlay();
+    this.overlayElement = this.createOverlay();
     this.overlayContent = this.createOverlayContent();
-    render(this.overlayContent(), this.overlay);
+    render(this.overlayContent(), this.overlayElement);
   }
 
   createOverlay() {
