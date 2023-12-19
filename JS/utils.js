@@ -1,13 +1,14 @@
-import { OverlayPosition } from "./overlay-position.js";
-import {Feedback} from "./feedback.js";
-import {Animation} from "./animation.js";
-import {MultiLanguageSupport} from "./multi-language-support.js";
-import {Settings} from "./overlay-settings.js";
-import {AccessibilityOptions} from "./accessibility-options.js";
+import { OverlayPosition } from "./utils/overlay-position.js";
+import {Feedback} from "./utils/feedback.js";
+import {Animation} from "./utils/animation.js";
+import {MultiLanguageSupport} from "./utils/multi-language-support.js";
+import {OverlaySettings} from "./utils/overlay-settings.js";
+import {AccessibilityOptions} from "./utils/accessibility-options.js";
 
 export class Utils {
   constructor(guidedTour) {
     this.guidedTour = guidedTour;
+    this.feedback = new Feedback();
   }
 
   updateOverlayContent() {
@@ -32,6 +33,10 @@ export class Utils {
         this.guidedTour.scrollTo.scrollToElement(stepElement);
       }
     }
+    // Ask for feedback when the tour ends
+    if (this.guidedTour.currentStepIndex === this.guidedTour.tourSteps.length) {
+        this.requestUserFeedback();
+      }
 
     // Update content
     this.updateOverlayContentText();
@@ -74,7 +79,7 @@ export class Utils {
   }
 
   requestUserFeedback(){
-    
+    this.feedback.askForFeedback();
   }
 
 

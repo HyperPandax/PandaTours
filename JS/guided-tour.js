@@ -40,8 +40,8 @@ export class GuidedTour {
   endTour() {
     // Remove 'highlight' class from all tour steps
     this.tourSteps.forEach((step) => step.classList.remove("highlight"));
-
     this.overlay.style.display = "none";
+    this.utils.requestUserFeedback();
   }
 
   start() {

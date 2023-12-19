@@ -124,3 +124,47 @@
   background: none;
   text-decoration: underline;
 }
+
+.feedbackContainer{
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  background-color: white;
+  border-radius:20px;
+  padding: 0.75%;
+  margin: 1.5%;
+  width: 40%;
+  height: 40%;
+  box-shadow: 2px 2px 5px gray, 2px 2px 5px gray inset,
+    0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.feedbackForm{
+  width:90%;
+  margin:0 auto;
+}
+.feedbackForm #stars{
+  width:100%;
+  margin-top:3%;
+  margin-bottom:3%;
+}
+.feedbackForm #subject{
+  width:100%;
+  margin-top:3%;
+  margin-bottom:3%;
+}
+.star {
+  cursor: pointer;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+.star svg {
+  width: 100%;
+  height: 100%;
+  fill: #ffd700; /* Filled star color */
+}
+
+.star.empty svg {
+  fill: #ccc; /* Empty star color */
+}

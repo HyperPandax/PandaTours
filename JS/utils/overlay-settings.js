@@ -1,4 +1,4 @@
-export class Settings {
+export class OverlaySettings {
     constructor() {
       this.textColor = "default";
       this.textSize = "medium";
