@@ -76,31 +76,31 @@ export class Feedback {
   }
 
   handleStarClick(event) {
-    const starElement = event.target.closest(".star");
-    if (starElement) {
-      const value = starElement.dataset.star;
-      this.stars = parseInt(value);
-  
-      // Update the SVG path directly
-      const svg = starElement.querySelector("svg");
-      const path = svg.querySelector("path");
-      path.setAttribute("d", this.getStarPath("full"));
-  
-      // Mark the previous stars as full and the rest as empty
-      const allStarElements = this.feedbackContainerElement.querySelectorAll(".star");
-      allStarElements.forEach((star) => {
-        const starValue = parseInt(star.dataset.star);
-        const starPath = star.querySelector("svg path");
-        if (starValue <= this.stars) {
-          starPath.setAttribute("d", this.getStarPath("full"));
-        } else {
-          starPath.setAttribute("d", this.getStarPath("empty"));
-        }
-      });
-  
-      console.log("clicked star: ", this.stars);
-    }
+  const starElement = event.target.closest(".star");
+  if (starElement) {
+    const value = starElement.dataset.star;
+    this.stars = parseInt(value);
+
+    // Update the SVG path directly
+    const svg = starElement.querySelector("svg");
+    const path = svg.querySelector("path");
+    path.setAttribute("d", this.getStarPath("full"));
+
+    // Mark the previous stars as full and the rest as empty
+    const allStarElements = this.feedbackContainerElement.querySelectorAll(".star");
+    allStarElements.forEach((star) => {
+      const starValue = parseInt(star.dataset.star);
+      const starPath = star.querySelector("svg path");
+      if (starValue <= this.stars) {
+        starPath.setAttribute("d", this.getStarPath("full"));
+      } else {
+        starPath.setAttribute("d", this.getStarPath("empty"));
+      }
+    });
+
+    console.log("clicked star: ", this.stars);
   }
+}
   handleFeedbackSubmission() {
     // Implement logic to handle feedback submission
     const subject = document.getElementById("subject").value;
@@ -117,5 +117,7 @@ export class Feedback {
   }
   closeFeedbackForm() {
     document.body.removeChild(this.feedbackContainerElement);
+    
+    //give user message thank you for the feedback
   }
 }
