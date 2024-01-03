@@ -1,8 +1,8 @@
 {
   "name": "panda-tours",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Improving onboarding with easy to implement tutorials",
+  "main": "dist/panda-tours.mjs",
   "scripts": {
     "start": "vite",
     "build": "vite build"
