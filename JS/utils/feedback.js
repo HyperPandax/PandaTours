@@ -45,29 +45,21 @@ export class Feedback {
   }
 
   getStarSVG(type) {
-    const svgNS = "http://www.w3.org/2000/svg";
-    const existingPath = document.createElementNS(svgNS, "path");
-    existingPath.setAttribute("d", this.getStarPath(type));
-
-    const svg = document.createElementNS(svgNS, "svg");
-    svg.setAttribute("width", "24");
-    svg.setAttribute("height", "24");
-    svg.setAttribute("viewBox", "0 0 576 512"); // Update viewBox
-    svg.appendChild(existingPath);
-
-    return svg;
-  }
-  
-  getStarPath(type){
-    switch (type) {
-      case "full":
-        return "M287.9 0c9.2 0 17.6 5.2 21.6 13.5l68.6 141.3 153.2 22.6c9 1.3 16.5 7.6 19.3 16.3s.5 18.1-5.9 24.5L433.6 328.4l26.2 155.6c1.5 9-2.2 18.1-9.7 23.5s-17.3 6-25.3 1.7l-137-73.2L151 509.1c-8.1 4.3-17.9 3.7-25.3-1.7s-11.2-14.5-9.7-23.5l26.2-155.6L31.1 218.2c-6.5-6.4-8.7-15.9-5.9-24.5s10.3-14.9 19.3-16.3l153.2-22.6L266.3 13.5C270.4 5.2 278.7 0 287.9 0zm0 79L235.4 187.2c-3.5 7.1-10.2 12.1-18.1 13.3L99 217.9 184.9 303c5.5 5.5 8.1 13.3 6.8 21L171.4 443.7l105.2-56.2c7.1-3.8 15.6-3.8 22.6 0l105.2 56.2L384.2 324.1c-1.3-7.7 1.2-15.5 6.8-21l85.9-85.1L358.6 200.5c-7.8-1.2-14.6-6.1-18.1-13.3L287.9 79z";
-      case "half":
-        return "M287.9 0c9.2 0 17.6 5.2 21.6 13.5l68.6 141.3 153.2 22.6c9 1.3 16.5 7.6 19.3 16.3s.5 18.1-5.9 24.5L433.6 328.4l26.2 155.6c1.5 9-2.2 18.1-9.7 23.5s-17.3 6-25.3 1.7l-137-73.2L151 509.1c-8.1 4.3-17.9 3.7-25.3-1.7s-11.2-14.5-9.7-23.5l26.2-155.6L31.1 218.2c-6.5-6.4-8.7-15.9-5.9-24.5s10.3-14.9 19.3-16.3l153.2-22.6L266.3 13.5C270.4 5.2 278.7 0 287.9 0zm0 79L235.4 187.2c-3.5 7.1-10.2 12.1-18.1 13.3L99 217.9 184.9 303c5.5 5.5 8.1 13.3 6.8 21L171.4 443.7l105.2-56.2c7.1-3.8 15.6-3.8 22.6 0l105.2 56.2L384.2 324.1c-1.3-7.7 1.2-15.5 6.8-21l85.9-85.1L358.6 200.5c-7.8-1.2-14.6-6.1-18.1-13.3L287.9 79z";
-      case "empty":
-      default:
-        return "M287.9 0c9.2 0 17.6 5.2 21.6 13.5l68.6 141.3 153.2 22.6c9 1.3 16.5 7.6 19.3 16.3s.5 18.1-5.9 24.5L433.6 328.4l26.2 155.6c1.5 9-2.2 18.1-9.7 23.5s-17.3 6-25.3 1.7l-137-73.2L151 509.1c-8.1 4.3-17.9 3.7-25.3-1.7s-11.2-14.5-9.7-23.5l26.2-155.6L31.1 218.2c-6.5-6.4-8.7-15.9-5.9-24.5s10.3-14.9 19.3-16.3l153.2-22.6L266.3 13.5C270.4 5.2 278.7 0 287.9 0zm0 79L235.4 187.2c-3.5 7.1-10.2 12.1-18.1 13.3L99 217.9 184.9 303c5.5 5.5 8.1 13.3 6.8 21L171.4 443.7l105.2-56.2c7.1-3.8 15.6-3.8 22.6 0l105.2 56.2L384.2 324.1c-1.3-7.7 1.2-15.5 6.8-21l85.9-85.1L358.6 200.5c-7.8-1.2-14.6-6.1-18.1-13.3L287.9 79z";
-    }
+    return html`
+    <svg width="120" height="120" viewBox="0 0 762 734" >
+      <!-- Rect SVG -->
+	    <rect class="rect" width="328" height="639" fill="white" x="50" y="50"/>  <!--width should be 328(half) or 639(whole) -->
+	    <!-- Mask SVG -->
+	    <g>
+		    <path fill-rule="evenodd" clip-rule="evenodd" d="M757 1H5V725H757V1ZM377.5 47L277 258L48 293.5L210.5 451.5L172.5 685.5L377.5 580L585.5 685.5L547 451.5L713 293.5L479.5 258L377.5 47Z" fill="white"/>
+	      <path fill="none" d="M5 1V0.5H4.5V1H5ZM757 1H757.5V0.5H757V1ZM5 725H4.5V725.5H5V725ZM757 725V725.5H757.5V725H757ZM277 258L277.077 258.494L277.338 258.454L277.451 258.215L277 258ZM377.5 47L377.95 46.7824L377.497 45.8443L377.049 46.785L377.5 47ZM48 293.5L47.9234 293.006L46.9326 293.16L47.6514 293.858L48 293.5ZM210.5 451.5L210.994 451.58L211.035 451.323L210.849 451.142L210.5 451.5ZM172.5 685.5L172.006 685.42L171.848 686.398L172.729 685.945L172.5 685.5ZM377.5 580L377.726 579.554L377.498 579.439L377.271 579.555L377.5 580ZM585.5 685.5L585.274 685.946L586.153 686.392L585.993 685.419L585.5 685.5ZM547 451.5L546.655 451.138L546.464 451.32L546.507 451.581L547 451.5ZM713 293.5L713.345 293.862L714.084 293.159L713.075 293.006L713 293.5ZM479.5 258L479.05 258.218L479.164 258.455L479.425 258.494L479.5 258ZM5 1.5H757V0.5H5V1.5ZM5.5 725V1H4.5V725H5.5ZM757 724.5H5V725.5H757V724.5ZM756.5 1V725H757.5V1H756.5ZM277.451 258.215L377.951 47.215L377.049 46.785L276.549 257.785L277.451 258.215ZM48.0766 293.994L277.077 258.494L276.923 257.506L47.9234 293.006L48.0766 293.994ZM210.849 451.142L48.3486 293.142L47.6514 293.858L210.151 451.858L210.849 451.142ZM172.994 685.58L210.994 451.58L210.006 451.42L172.006 685.42L172.994 685.58ZM377.271 579.555L172.271 685.055L172.729 685.945L377.729 580.445L377.271 579.555ZM585.726 685.054L377.726 579.554L377.274 580.446L585.274 685.946L585.726 685.054ZM546.507 451.581L585.007 685.581L585.993 685.419L547.493 451.419L546.507 451.581ZM712.655 293.138L546.655 451.138L547.345 451.862L713.345 293.862L712.655 293.138ZM479.425 258.494L712.925 293.994L713.075 293.006L479.575 257.506L479.425 258.494ZM377.05 47.2176L479.05 258.218L479.95 257.782L377.95 46.7824L377.05 47.2176Z" fill="#FF0909"/>
+	    </g>
+	    <!-- Star SVG -->
+	    <g>
+	      <path class="starpath" d="M277 259L377.5 48L479.5 259L713 294.5L547 452.5L585.5 686.5L377.5 581L172.5 686.5L210.5 452.5L48 294.5L277 259Z" stroke="black" stroke-width="41" fill="none" shape-rendering="crispEdges"/>
+	    </g>
+    </svg>
+    `;
   }
 
   attachStarClickListeners() {
@@ -76,31 +68,36 @@ export class Feedback {
   }
 
   handleStarClick(event) {
-  const starElement = event.target.closest(".star");
-  if (starElement) {
-    const value = starElement.dataset.star;
-    this.stars = parseInt(value);
+    const starElement = event.target.closest(".star");
+    if (starElement) {
+      const value = starElement.dataset.star;
+      this.stars = parseInt(value);
 
-    // Update the SVG path directly
-    const svg = starElement.querySelector("svg");
-    const path = svg.querySelector("path");
-    path.setAttribute("d", this.getStarPath("full"));
+      // Reset alle sterren naar de oorspronkelijke staat
+      const allStarElements = this.feedbackContainerElement.querySelectorAll(".star");
+      allStarElements.forEach((star) => {
+          const svg = star.querySelector("svg");
+          const starPath = svg.querySelector(".starpath");
+          const rect = svg.querySelector("rect");
+          starPath.setAttribute("stroke", "black");
+          rect.setAttribute("width", "328");
+          rect.setAttribute("fill", "white");
+      });
 
-    // Mark the previous stars as full and the rest as empty
-    const allStarElements = this.feedbackContainerElement.querySelectorAll(".star");
-    allStarElements.forEach((star) => {
-      const starValue = parseInt(star.dataset.star);
-      const starPath = star.querySelector("svg path");
-      if (starValue <= this.stars) {
-        starPath.setAttribute("d", this.getStarPath("full"));
-      } else {
-        starPath.setAttribute("d", this.getStarPath("empty"));
+      // Update de geklikte ster en de voorgaande sterren
+      for (let i = 1; i <= this.stars; i++) {
+          const currentStar = allStarElements[i - 1];
+          const svg = currentStar.querySelector("svg");
+          const starPath = svg.querySelector(".starpath");
+          const rect = svg.querySelector("rect");
+          starPath.setAttribute("stroke", "gold");
+          rect.setAttribute("width", "639");
+          rect.setAttribute("fill", "gold");
       }
-    });
-
-    console.log("clicked star: ", this.stars);
+      console.log("clicked star: ", this.stars);
+    }
   }
-}
+
   handleFeedbackSubmission() {
     // Implement logic to handle feedback submission
     const subject = document.getElementById("subject").value;

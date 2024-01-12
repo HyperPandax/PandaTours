@@ -5,7 +5,8 @@
   "main": "dist/panda-tours.mjs",
   "scripts": {
     "start": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "test-e2e": "playwright test"
   },
   "author": "Lisanne Reilman",
   "license": "ISC",
