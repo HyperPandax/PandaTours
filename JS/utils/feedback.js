@@ -22,15 +22,13 @@ export class Feedback {
   createFeedbackForm() {
     return html`
       <form class="feedbackForm">
-        <label for="stars">How many stars would you give this tour?</label>
+        <p class="formTitle">How many stars would you give this tour?</p>
         <div id="stars" class="star-container">
           ${this.renderStars()}
         </div>
-
-        <label for="subject">Subject</label>
         <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
-        <input type="button" value="Submit" @click="${() => this.handleFeedbackSubmission()}">
+        <input class="subButton" type="button" value="Submit" @click="${() => this.handleFeedbackSubmission()}">
       </form>
     `;
   }
@@ -56,7 +54,7 @@ export class Feedback {
 	    </g>
 	    <!-- Star SVG -->
 	    <g>
-	      <path class="starpath" d="M277 259L377.5 48L479.5 259L713 294.5L547 452.5L585.5 686.5L377.5 581L172.5 686.5L210.5 452.5L48 294.5L277 259Z" stroke="black" stroke-width="41" fill="none" shape-rendering="crispEdges"/>
+	      <path class="starpath" d="M277 259L377.5 48L479.5 259L713 294.5L547 452.5L585.5 686.5L377.5 581L172.5 686.5L210.5 452.5L48 294.5L277 259Z" stroke="gray" stroke-width="41" fill="none" shape-rendering="crispEdges"/>
 	    </g>
     </svg>
     `;
@@ -79,7 +77,7 @@ export class Feedback {
           const svg = star.querySelector("svg");
           const starPath = svg.querySelector(".starpath");
           const rect = svg.querySelector("rect");
-          starPath.setAttribute("stroke", "black");
+          starPath.setAttribute("stroke", "gray");
           rect.setAttribute("width", "328");
           rect.setAttribute("fill", "white");
       });
