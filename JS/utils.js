@@ -33,17 +33,16 @@ export class Utils {
         this.guidedTour.scrollTo.scrollToElement(stepElement);
       }
     }
-    // Ask for feedback when the tour ends
-    if (this.guidedTour.currentStepIndex === this.guidedTour.tourSteps.length) {
-        this.requestUserFeedback();
-      }
-
+    
     // Update content
     this.updateOverlayContentText();
 
     // Disable Previous button if it's the first step
     this.togglePrevButtonDisabled();
 
+    // Change next button to finish it its the last step
+    this.changeToFinishButton()
+   
     // Update progress bar
     this.updateProgressBar();
 
@@ -67,6 +66,12 @@ export class Utils {
     }
   }
 
+  changeToFinishButton(){
+    if (this.guidedTour.currentStepIndex === (this.guidedTour.tourSteps.length-1)){
+      this.guidedTour.overlay.querySelector(".next-button").innerHTML="Finish";
+    } 
+  }
+
   updateProgressBar() {
     this.guidedTour.overlay.querySelector(".progress-bar").value =
       (100 / this.guidedTour.tourSteps.length) * this.guidedTour.currentStepIndex +
@@ -81,7 +86,4 @@ export class Utils {
   requestUserFeedback(){
     this.feedback.askForFeedback();
   }
-
-
-
 }

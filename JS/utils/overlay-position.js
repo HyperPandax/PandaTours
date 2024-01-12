@@ -9,6 +9,8 @@ export class OverlayPosition {
     const elementRect = targetElement.getBoundingClientRect();
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
 
+    
+
     // If no position is specified, default to "top" if the element is in the lower half of the screen
     if (!position) {
       position = elementRect.top > viewportHeight / 2 ? "top" : "bottom";
@@ -23,29 +25,30 @@ export class OverlayPosition {
       .trim()
       .split(",")
       .map((pos) => pos.trim());
-
+      //calculate the difference between the viewport and top of the page 
+      const scrollDifference = this.calcScrollDifference();
     switch (mainPosition) {
       case "top":
-        overlay.style.top = `${elementRect.top - overlay.offsetHeight - distance}px`;
+        overlay.style.top = `${(elementRect.top - overlay.offsetHeight - distance)+scrollDifference}px`;
         overlay.style.left = `${elementRect.left}px`;
         break;
       case "bottom":
-        overlay.style.top = `${elementRect.bottom + distance}px`;
+        overlay.style.top = `${(elementRect.bottom + distance)+scrollDifference}px`;
         overlay.style.left = `${elementRect.left}px`;
         break;
       case "left":
-        overlay.style.top = `${elementRect.top}px`;
+        overlay.style.top = `${(elementRect.top)+scrollDifference}px`;
         overlay.style.left = `${elementRect.left - overlay.offsetWidth - sideDistance}px`;
         break;
       case "right":
-        overlay.style.top = `${elementRect.top}px`;
+        overlay.style.top = `${(elementRect.top)+scrollDifference}px`;
         overlay.style.left = `${elementRect.right + sideDistance}px`;
         break;
       default:
         // Default position (top or bottom)
         overlay.style.top =
           mainPosition === "top"
-            ? `${elementRect.top - overlay.offsetHeight - distance}px`
+            ? `${(elementRect.top - overlay.offsetHeight - distance)+scrollDifference}px`
             : `${elementRect.bottom + distance}px`;
         overlay.style.left = `${elementRect.left}px`;
         break;
@@ -100,5 +103,19 @@ export class OverlayPosition {
 
   static adjustOverlayPositionAfterScroll(overlay, targetElementRect, distance, sideDistance) {
     
+  }
+
+  static calcScrollDifference(){
+    // Get the top position of the viewport
+    const viewportTop = window.scrollY || window.pageYOffset;
+
+    // Get the top position of the page
+    const pageTop = 0; // You can set this to any specific value if needed, like the top position of a specific element
+
+    // Calculate the difference
+    const scrollDifference = viewportTop - pageTop;
+
+    console.log("Scroll Difference:", scrollDifference);
+    return scrollDifference;
   }
 }
