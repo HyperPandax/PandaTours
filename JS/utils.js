@@ -36,6 +36,9 @@ export class Utils {
 
     // Reappend the overlay content
     this.reappendOverlayContent();
+        
+    this.guidedTour.overlay.style.visibility = "visible";
+    
   }
 
   changeOverlayPosition() {
@@ -49,6 +52,7 @@ export class Utils {
         this.guidedTour.scrollTo.scrollToElement(stepElement);
       }
     }
+
   }
 
   animateOverlayTransition(toTop, toLeft) {

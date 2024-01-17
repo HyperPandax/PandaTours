@@ -9,16 +9,10 @@ export class OverlayPosition {
     const elementRect = targetElement.getBoundingClientRect();
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
 
-    
-
     // If no position is specified, default to "top" if the element is in the lower half of the screen
     if (!position) {
       position = elementRect.top > viewportHeight / 2 ? "top" : "bottom";
     }
-
-    // Reset distances before calculating for each step
-    overlay.style.top = "";
-    overlay.style.left = "";
 
     // Split the position into mainPosition and alignment
     const [mainPosition, alignment = ""] = position
@@ -29,18 +23,22 @@ export class OverlayPosition {
       const scrollDifference = this.calcScrollDifference();
     switch (mainPosition) {
       case "top":
+        overlay.style.transition = "top 0.5s, left 0.5s";
         overlay.style.top = `${(elementRect.top - overlay.offsetHeight - distance)+scrollDifference}px`;
         overlay.style.left = `${elementRect.left}px`;
         break;
       case "bottom":
+        overlay.style.transition = "top 0.5s, left 0.5s";
         overlay.style.top = `${(elementRect.bottom + distance)+scrollDifference}px`;
         overlay.style.left = `${elementRect.left}px`;
         break;
       case "left":
+        overlay.style.transition = "top 0.5s, left 0.5s";
         overlay.style.top = `${(elementRect.top)+scrollDifference}px`;
         overlay.style.left = `${elementRect.left - overlay.offsetWidth - sideDistance}px`;
         break;
       case "right":
+        overlay.style.transition = "top 0.5s, left 0.5s";
         overlay.style.top = `${(elementRect.top)+scrollDifference}px`;
         overlay.style.left = `${elementRect.right + sideDistance}px`;
         break;

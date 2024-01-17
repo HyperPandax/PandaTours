@@ -9,6 +9,9 @@
   width: 300px;
   min-height: 150px;
   max-height: 400px;
+  top: 0;
+  left:0;
+  visibility: hidden;
 }
 
 .overlay-content {
