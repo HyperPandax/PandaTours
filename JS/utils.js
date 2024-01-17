@@ -18,6 +18,8 @@ export class Utils {
     // Highlight the current step
     this.guidedTour.tourSteps[this.guidedTour.currentStepIndex].classList.add("highlight");
 
+    this.toggleDarkBodyOverlay();
+
     // Use the current step element for positioning
     const position = this.guidedTour.tourSteps[this.guidedTour.currentStepIndex].getAttribute("data-position");
     OverlayPosition.setPosition(
@@ -85,5 +87,58 @@ export class Utils {
 
   requestUserFeedback(){
     this.feedback.askForFeedback();
+  }
+
+  toggleDarkBodyOverlay(){
+    //verwijder bestaande overlay
+    if(document.body.querySelector(".darkBodyOverlay")){
+      document.body.querySelector(".darkBodyOverlay").remove();
+    }
+
+    //Maak een nieuwe darkBodyOverlay aan en voeg deze toe
+    const darkBodyOverlay = document.createElement("div");
+    darkBodyOverlay.classList.add("darkBodyOverlay");
+    document.body.appendChild(darkBodyOverlay);
+
+ 
+
+    const highlighted = document.body.querySelector(".highlight");   
+    //Check if element position is static and if it is set to relative
+    if(window.getComputedStyle( highlighted ,null).getPropertyValue('position')==="static"){
+      console.log("ahhhh static");
+      highlighted.style.position="relative";
+    }
+
+    //Get BG color of the highlighted element
+    const bgColor = window.getComputedStyle( highlighted ,null).getPropertyValue('background-color');
+    console.log("bgColor: " + bgColor);
+    
+    if(bgColor=== "rgba(0, 0, 0, 0)"){
+      console.log("TRANSPARENT");
+      //get parent bgcolor and set it to that.
+      const parentElement = highlighted.parentNode;
+      const parentBgColor = window.getComputedStyle( parentElement ,null).getPropertyValue('background-color');
+
+      console.log(parentBgColor);
+
+      if (parentBgColor != "rgba(0, 0, 0, 0)"){
+        highlighted.style.backgroundColor = parentBgColor;
+        console.log("parents Color");
+      }else{
+        //if parent doesnt have a bg check color of text.  
+        const txtColor = window.getComputedStyle( highlighted ,null).getPropertyValue('color');      
+        //if textcolor is white set bg to black
+        if(txtColor==="rgb(255, 255, 255)"){
+          highlighted.style.backgroundColor = 'black';
+          console.log("set bg to black");
+        }else{
+          //else set bg to white
+          highlighted.style.backgroundColor = 'white';
+          console.log("set bg to white");
+        }
+      }
+    }
+
+    
   }
 }

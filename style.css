@@ -18,6 +18,7 @@ ul {
 
 li {
   float: left;
+  background-color:#333;
 }
 
 li a {

@@ -42,6 +42,8 @@ export class GuidedTour {
     this.tourSteps.forEach((step) => step.classList.remove("highlight"));
     this.overlay.style.display = "none";
     this.utils.requestUserFeedback();
+
+    document.body.querySelector(".darkBodyOverlay").remove();
   }
 
   start() {

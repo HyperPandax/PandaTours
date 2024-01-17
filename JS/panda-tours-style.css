@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 999;
   background: none;
   width: 300px;
   min-height: 150px;
@@ -23,10 +23,10 @@
   box-shadow: 2px 2px 5px gray, 2px 2px 5px gray inset,
     0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
-  z-index: 9998;
+  z-index: 998;
 }
 
-/* .dark-overlay {
+ .darkBodyOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -38,9 +38,9 @@
     0,
     0.5
   ); 
-  z-index: 9990; 
+  z-index: 800; 
   transition: opacity 0.3s ease; 
-} */
+}
 
 .overlay-section {
   width: 92%;
@@ -125,6 +125,8 @@
   text-decoration: underline;
 }
 
+
+
 .feedbackContainer{
   position: absolute;
   top: 15%;
@@ -137,6 +139,7 @@
   height: 55%;
   box-shadow: 2px 2px 5px gray, 2px 2px 5px gray inset,
     0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index:9999
 }
 .feedbackForm{
   width:90%;
