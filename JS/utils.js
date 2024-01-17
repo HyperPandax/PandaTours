@@ -20,22 +20,8 @@ export class Utils {
 
     this.toggleDarkBodyOverlay();
 
-    // Use the current step element for positioning
-    const position = this.guidedTour.tourSteps[this.guidedTour.currentStepIndex].getAttribute("data-position");
-    OverlayPosition.setPosition(
-      this.guidedTour.overlay,
-      this.guidedTour.tourSteps[this.guidedTour.currentStepIndex],
-      position
-    );
+    this.changeOverlayPosition();
 
-    // Scroll to
-    const stepElement = this.guidedTour.tourSteps[this.guidedTour.currentStepIndex];
-    if (stepElement) {
-      if (!OverlayPosition.isElementInViewport(stepElement.getBoundingClientRect())) {
-        this.guidedTour.scrollTo.scrollToElement(stepElement);
-      }
-    }
-    
     // Update content
     this.updateOverlayContentText();
 
@@ -50,6 +36,28 @@ export class Utils {
 
     // Reappend the overlay content
     this.reappendOverlayContent();
+  }
+
+  changeOverlayPosition() {
+    const currentStepElement = this.guidedTour.tourSteps[this.guidedTour.currentStepIndex];
+    const position = currentStepElement.getAttribute("data-position");
+    OverlayPosition.setPosition(this.guidedTour.overlay, currentStepElement, position);
+
+    const stepElement = this.guidedTour.tourSteps[this.guidedTour.currentStepIndex];
+    if (stepElement) {
+      if (!OverlayPosition.isElementInViewport(stepElement.getBoundingClientRect())) {
+        this.guidedTour.scrollTo.scrollToElement(stepElement);
+      }
+    }
+  }
+
+  animateOverlayTransition(toTop, toLeft) {
+    const overlay = this.guidedTour.overlay;
+    const currentTop = overlay.offsetTop;
+    const currentLeft = overlay.offsetLeft;
+    overlay.style.top = `${toTop}px`;
+    overlay.style.left = `${toLeft}px`;
+    //Animation.transitionOverlay(overlay, currentTop, currentLeft, toTop, toLeft);
   }
 
   updateOverlayContentText() {
@@ -100,8 +108,6 @@ export class Utils {
     darkBodyOverlay.classList.add("darkBodyOverlay");
     document.body.appendChild(darkBodyOverlay);
 
- 
-
     const highlighted = document.body.querySelector(".highlight");   
     //Check if element position is static and if it is set to relative
     if(window.getComputedStyle( highlighted ,null).getPropertyValue('position')==="static"){
@@ -137,8 +143,7 @@ export class Utils {
           console.log("set bg to white");
         }
       }
-    }
-
-    
+    } 
   }
+
 }
