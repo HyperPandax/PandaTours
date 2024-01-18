@@ -23,10 +23,10 @@
 }
 
 .highlight {
-  box-shadow: 2px 2px 5px gray, 2px 2px 5px gray inset,
-    0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow:   0 0 0 2px #404040;
   border-radius: 5px;
   z-index: 998;
+  transition: all 2s ease;
 }
 
  .darkBodyOverlay {
@@ -131,9 +131,9 @@
 
 
 .feedbackContainer{
-  position: absolute;
+  position: fixed;
   top: 15%;
-  left: 30%;
+  left: 27.75%;
   background-color: white;
   border-radius:20px;
   padding: 0.75%;
