@@ -52,6 +52,13 @@
   padding-top: 5px;
   padding-bottom: 5px;
 }
+.title-section {
+
+}
+.text-section {
+
+}
+
 .step-title {
   margin: 0 auto;
 }
@@ -126,17 +133,17 @@
   background: none;
   text-decoration: underline;
 }
+form { max-width: 30rem;}
 
 .feedbackContainer{
   position: fixed;
   top: 15%;
-  left: 27.75%;
+  left: 32.75%;
   background-color: white;
   border-radius:20px;
   padding: 0.75%;
   margin: 1.5%;
-  width: 40%;
-  height: 55%;
+  width: 30%;
   box-shadow: 2px 2px 5px gray, 2px 2px 5px gray inset,
     0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   z-index:9999
@@ -157,14 +164,15 @@
   width:100%;
   margin-top:3%;
   margin-bottom:3%;
-  height:220px;
+  height:100px;
 }
 .feedbackForm .star{
   margin:6px;
+  width:80px;
 }
 .feedbackForm .starSvg{
-  width: 60px !important;
-  height: 60px !important;
+  width: 80px !important;
+  height: 80px !important;
 }
 .feedbackForm #subject{
   width:100%;

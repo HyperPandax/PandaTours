@@ -39,6 +39,7 @@ export class GuidedTour {
 
   endTour() {
     // Remove 'highlight' class from all tour steps
+    console.log("End Tour");
     this.tourSteps.forEach((step) => step.classList.remove("highlight"));
     this.overlay.style.display = "none";
     this.utils.requestUserFeedback();
@@ -47,6 +48,7 @@ export class GuidedTour {
   }
 
   start() {
+    console.log("Start Tour");
     this.overlay.style.display = "flex";
     this.utils.updateOverlayContent();
 

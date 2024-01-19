@@ -15,10 +15,10 @@ export class Overlay {
 
   createOverlayContent() {
     const overlayContent = () => html`<div class="overlay-content">
-      <div class="overlay-section">
+      <div class="overlay-section title-section">
         <h2 class="step-title"></h2>
       </div>
-      <div class="overlay-section">
+      <div class="overlay-section text-section">
         <p class="step-text"></p>
       </div>
       <div class="overlay-section progress-div">

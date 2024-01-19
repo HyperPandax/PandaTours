@@ -4,7 +4,7 @@ export class Feedback {
   constructor() {
     this.feedbackContainerElement = this.createFeedbackContainer();
     this.stars = 0; // Initialize stars to 0
-    this.renderFeedbackForm();
+   
   }
 
   createFeedbackContainer() {
@@ -26,7 +26,7 @@ export class Feedback {
         <div id="stars" class="star-container">
           ${this.renderStars()}
         </div>
-        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+        <textarea id="subject" name="subject" placeholder="Write something.." ></textarea>
 
         <input class="subButton" type="button" value="Submit" @click="${() => this.handleFeedbackSubmission()}">
       </form>
@@ -36,13 +36,13 @@ export class Feedback {
   renderStars() {
     const starElements = [];
     for (let i = 1; i <= 5; i++) {
-      const starType = i <= this.stars ? "full" : i - 0.5 === this.stars ? "half" : "empty";
-      starElements.push(html`<span class="star" data-star="${i}">${this.getStarSVG(starType)}</span>`);
+      starElements.push(html`<span class="star" data-star="${i}">${this.getStarSVG()}</span>`);
+      console.log(starElements);
     }
     return starElements;
   }
 
-  getStarSVG(type) {
+  getStarSVG() {
     return html`
     <svg class="starSvg" viewBox="0 0 762 734" >
       <!-- Rect SVG -->
@@ -108,6 +108,7 @@ export class Feedback {
     this.closeFeedbackForm();
   }
   askForFeedback() {
+    this.renderFeedbackForm();
     document.body.appendChild(this.feedbackContainerElement);
   }
   closeFeedbackForm() {

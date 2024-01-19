@@ -58,6 +58,24 @@ export class Utils {
     this.guidedTour.overlayContent.querySelector(".step-text").innerText =
       this.guidedTour.tourSteps[this.guidedTour.currentStepIndex].getAttribute("data-intro") ||
       "Default Content";
+      
+    const textsection = this.guidedTour.overlay.querySelector(".text-section");
+    const titlesection = this.guidedTour.overlay.querySelector(".title-section");
+
+    if(this.guidedTour.tourSteps[this.guidedTour.currentStepIndex].getAttribute("data-title")===null){
+      titlesection.style.height ="0px";
+      textsection.style.height ="80px";
+      console.log("NO TITLE");
+    }else{
+      titlesection.style.height ="40px";
+      textsection.style.height ="40px";
+    }
+    
+    var lvalue = textsection.innerHTML.length;
+    console.log(lvalue);
+    if(lvalue >= 180){
+      textsection.style.height ="100px";
+    }
   }
 
   togglePrevButtonDisabled() {
