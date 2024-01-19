@@ -1,5 +1,5 @@
-import { GuidedTour } from "./guided-tour.js";
+export { GuidedTour } from "./guided-tour.js";
 
-const guidedTour = new GuidedTour();
-guidedTour.start();
 
+// const guidedTour = new GuidedTour();
+// guidedTour.start();
