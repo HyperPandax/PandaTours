@@ -1,6 +1,6 @@
 {
   "name": "panda-tours",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Improving onboarding with easy to implement tutorials",
   "main": "dist/panda-tours.mjs",
   "scripts": {
