@@ -71,7 +71,7 @@ export class Feedback {
       const value = starElement.dataset.star;
       this.stars = parseInt(value);
 
-      // Reset alle sterren naar de oorspronkelijke staat
+      // Reset all stars to original state
       const allStarElements = this.feedbackContainerElement.querySelectorAll(".star");
       allStarElements.forEach((star) => {
           const svg = star.querySelector("svg");
@@ -82,7 +82,7 @@ export class Feedback {
           rect.setAttribute("fill", "white");
       });
 
-      // Update de geklikte ster en de voorgaande sterren
+      // Update de pressed star and the stars before it
       for (let i = 1; i <= this.stars; i++) {
           const currentStar = allStarElements[i - 1];
           const svg = currentStar.querySelector("svg");

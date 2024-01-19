@@ -90,12 +90,12 @@ export class Utils {
   }
 
   toggleDarkBodyOverlay(){
-    //verwijder bestaande overlay
+    //remove existing overlay
     if(document.body.querySelector(".darkBodyOverlay")){
       document.body.querySelector(".darkBodyOverlay").remove();
     }
 
-    //Maak een nieuwe darkBodyOverlay aan en voeg deze toe
+    //Make new dark body overlay and display it
     const darkBodyOverlay = document.createElement("div");
     darkBodyOverlay.classList.add("darkBodyOverlay");
     document.body.appendChild(darkBodyOverlay);
@@ -110,16 +110,16 @@ export class Utils {
     const bgColor = window.getComputedStyle( highlighted ,null).getPropertyValue('background-color');
     
     if(bgColor=== "rgba(0, 0, 0, 0)"){
-      //get parent bgcolor and set it to that.
+      //get parent background color and set it to that.
       const parentElement = highlighted.parentNode;
       const parentBgColor = window.getComputedStyle( parentElement ,null).getPropertyValue('background-color');
 
       if (parentBgColor != "rgba(0, 0, 0, 0)"){
         highlighted.style.backgroundColor = parentBgColor;
       }else{
-        //if parent doesnt have a bg check color of text.  
+        //if parent doesn't have a bg check color of text.  
         const txtColor = window.getComputedStyle( highlighted ,null).getPropertyValue('color');      
-        //if textcolor is white set bg to black
+        //if text color is white set bg to black
         if(txtColor==="rgb(255, 255, 255)"){
           highlighted.style.backgroundColor = 'black';
         }else{
