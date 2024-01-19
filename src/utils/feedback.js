@@ -44,7 +44,7 @@ export class Feedback {
 
   getStarSVG(type) {
     return html`
-    <svg width="120" height="120" viewBox="0 0 762 734" >
+    <svg class="starSvg" viewBox="0 0 762 734" >
       <!-- Rect SVG -->
 	    <rect class="rect" width="328" height="639" fill="white" x="50" y="50"/>  <!--width should be 328(half) or 639(whole) -->
 	    <!-- Mask SVG -->

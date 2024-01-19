@@ -1,7 +1,7 @@
 /* styles.css */
 .overlay {
   position: absolute;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   z-index: 999;
@@ -9,9 +9,7 @@
   width: 300px;
   min-height: 150px;
   max-height: 400px;
-  top: 0;
-  left:0;
-  visibility: hidden;
+
 }
 
 .overlay-content {
@@ -20,10 +18,11 @@
   border-radius: 10px;
   background-color: white;
   width: 100%;
+  color:black !important;
 }
 
 .highlight {
-  box-shadow:   0 0 0 2px #404040;
+  box-shadow: 0 0 0 2px #404040;
   border-radius: 5px;
   z-index: 998;
   transition: all 2s ease;
@@ -128,8 +127,6 @@
   text-decoration: underline;
 }
 
-
-
 .feedbackContainer{
   position: fixed;
   top: 15%;
@@ -145,7 +142,7 @@
   z-index:9999
 }
 .feedbackForm{
-  width:90%;
+  width:100% !important;
   margin:0 auto;
 }
 
@@ -160,14 +157,21 @@
   width:100%;
   margin-top:3%;
   margin-bottom:3%;
+  height:220px;
 }
 .feedbackForm .star{
   margin:6px;
+}
+.feedbackForm .starSvg{
+  width: 60px !important;
+  height: 60px !important;
 }
 .feedbackForm #subject{
   width:100%;
   margin-top:3%;
   margin-bottom:3%;
+  background-color:white !important;
+  height:100px;
 }
 
 .feedbackForm .subButton{

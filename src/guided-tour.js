@@ -49,7 +49,7 @@ export class GuidedTour {
   start() {
     this.overlay.style.display = "flex";
     this.utils.updateOverlayContent();
-    this.overlay.style.visibility = "visible";
+
   }
 
   restartTour() {

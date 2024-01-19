@@ -6,6 +6,7 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
+    "watch": "vite build --watch & vite preview",
     "test-e2e": "playwright test"
   },
   "author": "Lisanne Reilman",
