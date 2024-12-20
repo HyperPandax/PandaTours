@@ -48,10 +48,12 @@ export class GuidedTour {
   }
 
   start() {
+    document.body.querySelector(".feedbackContainer")?.remove();
+    document.body.querySelector(".darkBodyOverlay")?.remove();
+
     console.log("Start Tour");
     this.overlay.style.display = "flex";
     this.utils.updateOverlayContent();
-
   }
 
   restartTour() {

@@ -1,8 +1,8 @@
 import { OverlayPosition } from "./utils/overlay-position.js";
-import {Feedback} from "./utils/feedback.js";
-import {MultiLanguageSupport} from "./utils/multi-language-support.js";
-import {OverlaySettings} from "./utils/overlay-settings.js";
-import {AccessibilityOptions} from "./utils/accessibility-options.js";
+import { Feedback } from "./utils/feedback.js";
+import { MultiLanguageSupport } from "./utils/multi-language-support.js";
+import { OverlaySettings } from "./utils/overlay-settings.js";
+import { AccessibilityOptions } from "./utils/accessibility-options.js";
 
 export class Utils {
   constructor(guidedTour) {
@@ -12,12 +12,15 @@ export class Utils {
 
   updateOverlayContent() {
     // Remove highlight from previous step
-    this.guidedTour.tourSteps.forEach((step) => step.classList.remove("highlight"));
-
+    if (document.body.querySelector(".highlight") != null) {
+      const highlighted = document.body.querySelector(".highlight");
+      highlighted.style.backgroundColor = "none";
+      this.guidedTour.tourSteps.forEach((step) => step.classList.remove("highlight"));
+    }
     // Highlight the current step
     this.guidedTour.tourSteps[this.guidedTour.currentStepIndex].classList.add("highlight");
     //Animation.fadeHighlightIn(this.guidedTour.tourSteps[this.guidedTour.currentStepIndex]);
-    
+
     this.toggleDarkBodyOverlay();
 
     this.changeOverlayPosition();
@@ -29,13 +32,13 @@ export class Utils {
     this.togglePrevButtonDisabled();
 
     // Change next button to finish it its the last step
-    this.changeToFinishButton()
-   
+    this.changeToFinishButton();
+
     // Update progress bar
     this.updateProgressBar();
 
     // Reappend the overlay content
-    this.reappendOverlayContent(); 
+    this.reappendOverlayContent();
   }
 
   changeOverlayPosition() {
@@ -44,7 +47,7 @@ export class Utils {
     OverlayPosition.setPosition(this.guidedTour.overlay, currentStepElement, position);
 
     const stepElement = this.guidedTour.tourSteps[this.guidedTour.currentStepIndex];
-    
+
     if (stepElement) {
       if (!OverlayPosition.isElementInViewport(stepElement.getBoundingClientRect())) {
         this.guidedTour.scrollTo.scrollToElement(stepElement);
@@ -56,25 +59,24 @@ export class Utils {
     this.guidedTour.overlayContent.querySelector(".step-title").innerText =
       this.guidedTour.tourSteps[this.guidedTour.currentStepIndex].getAttribute("data-title") || "";
     this.guidedTour.overlayContent.querySelector(".step-text").innerText =
-      this.guidedTour.tourSteps[this.guidedTour.currentStepIndex].getAttribute("data-intro") ||
-      "Default Content";
-      
+      this.guidedTour.tourSteps[this.guidedTour.currentStepIndex].getAttribute("data-intro") || "Default Content";
+
     const textsection = this.guidedTour.overlay.querySelector(".text-section");
     const titlesection = this.guidedTour.overlay.querySelector(".title-section");
 
-    if(this.guidedTour.tourSteps[this.guidedTour.currentStepIndex].getAttribute("data-title")===null){
-      titlesection.style.height ="0px";
-      textsection.style.height ="80px";
+    if (this.guidedTour.tourSteps[this.guidedTour.currentStepIndex].getAttribute("data-title") === null) {
+      titlesection.style.height = "0px";
+      textsection.style.height = "80px";
       console.log("NO TITLE");
-    }else{
-      titlesection.style.height ="40px";
-      textsection.style.height ="40px";
+    } else {
+      titlesection.style.height = "40px";
+      textsection.style.height = "40px";
     }
-    
+
     var lvalue = textsection.innerHTML.length;
     console.log(lvalue);
-    if(lvalue >= 180){
-      textsection.style.height ="100px";
+    if (lvalue >= 180) {
+      textsection.style.height = "100px";
     }
   }
 
@@ -86,10 +88,10 @@ export class Utils {
     }
   }
 
-  changeToFinishButton(){
-    if (this.guidedTour.currentStepIndex === (this.guidedTour.tourSteps.length-1)){
-      this.guidedTour.overlay.querySelector(".next-button").innerHTML="Finish";
-    } 
+  changeToFinishButton() {
+    if (this.guidedTour.currentStepIndex === this.guidedTour.tourSteps.length - 1) {
+      this.guidedTour.overlay.querySelector(".next-button").innerHTML = "Finish";
+    }
   }
 
   updateProgressBar() {
@@ -103,13 +105,13 @@ export class Utils {
     this.guidedTour.overlay.appendChild(this.guidedTour.overlayContent);
   }
 
-  requestUserFeedback(){
+  requestUserFeedback() {
     this.feedback.askForFeedback();
   }
 
-  toggleDarkBodyOverlay(){
+  toggleDarkBodyOverlay() {
     //remove existing overlay
-    if(document.body.querySelector(".darkBodyOverlay")){
+    if (document.body.querySelector(".darkBodyOverlay")) {
       document.body.querySelector(".darkBodyOverlay").remove();
     }
 
@@ -118,34 +120,33 @@ export class Utils {
     darkBodyOverlay.classList.add("darkBodyOverlay");
     document.body.appendChild(darkBodyOverlay);
 
-    const highlighted = document.body.querySelector(".highlight");   
+    const highlighted = document.body.querySelector(".highlight");
     //Check if element position is static and if it is set to relative
-    if(window.getComputedStyle( highlighted ,null).getPropertyValue('position')==="static"){
-      highlighted.style.position="relative";
+    if (window.getComputedStyle(highlighted, null).getPropertyValue("position") === "static") {
+      highlighted.style.position = "relative";
     }
 
     //Get BG color of the highlighted element
-    const bgColor = window.getComputedStyle( highlighted ,null).getPropertyValue('background-color');
-    
-    if(bgColor=== "rgba(0, 0, 0, 0)"){
+    const bgColor = window.getComputedStyle(highlighted, null).getPropertyValue("background-color");
+
+    if (bgColor === "rgba(0, 0, 0, 0)") {
       //get parent background color and set it to that.
       const parentElement = highlighted.parentNode;
-      const parentBgColor = window.getComputedStyle( parentElement ,null).getPropertyValue('background-color');
+      const parentBgColor = window.getComputedStyle(parentElement, null).getPropertyValue("background-color");
 
-      if (parentBgColor != "rgba(0, 0, 0, 0)"){
+      if (parentBgColor != "rgba(0, 0, 0, 0)") {
         highlighted.style.backgroundColor = parentBgColor;
-      }else{
-        //if parent doesn't have a bg check color of text.  
-        const txtColor = window.getComputedStyle( highlighted ,null).getPropertyValue('color');      
+      } else {
+        //if parent doesn't have a bg check color of text.
+        const txtColor = window.getComputedStyle(highlighted, null).getPropertyValue("color");
         //if text color is white set bg to black
-        if(txtColor==="rgb(255, 255, 255)"){
-          highlighted.style.backgroundColor = 'black';
-        }else{
+        if (txtColor === "rgb(255, 255, 255)") {
+          highlighted.style.backgroundColor = "black";
+        } else {
           //else set bg to white
-          highlighted.style.backgroundColor = 'white';
+          highlighted.style.backgroundColor = "white";
         }
       }
-    } 
+    }
   }
-
 }

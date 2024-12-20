@@ -27,7 +27,6 @@ export class Feedback {
           ${this.renderStars()}
         </div>
         <textarea id="subject" name="subject" placeholder="Write something.." ></textarea>
-
         <input class="subButton" type="button" value="Submit" @click="${() => this.handleFeedbackSubmission()}">
       </form>
     `;
